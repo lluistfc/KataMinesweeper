@@ -74,6 +74,25 @@ class Minesweeper
         return $output;
     }
 
+    public function printOutput()
+    {
+        $output = $this->processData();
+
+        foreach ($output as $k => $field) {
+            echo $this->printField($k, $field) . PHP_EOL;
+        }
+    }
+
+    public function printField($k, $data)
+    {
+        $output = 'Field '.($k+1).':' . PHP_EOL;
+        foreach ($data as $row => $values) {
+            $output .= implode('', $values) . PHP_EOL;
+        }
+
+        return $output;
+    }
+
     public function isMine($value)
     {
         return $value === '*' ? true : false;
